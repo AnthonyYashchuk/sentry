@@ -54,7 +54,7 @@ export default class ProjectTags extends AsyncView {
               </tr>
             </thead>
             <tbody>
-              {this.state.tags.map(({key, name}, idx) => {
+              {this.state.tags.map(({key, name, canDelete}, idx) => {
                 return (
                   <tr key={key}>
                     <td>
@@ -65,14 +65,16 @@ export default class ProjectTags extends AsyncView {
                       </h5>
                     </td>
                     <td>
-                      <LinkWithConfirmation
-                        className="btn btn-sm btn-default"
-                        title={'Remove tag?'}
-                        message={'Are you sure you want to remove this tag?'}
-                        onConfirm={() => this.onDelete(key, idx)}
-                      >
-                        <span className="icon icon-trash" />
-                      </LinkWithConfirmation>
+                      {canDelete && (
+                        <LinkWithConfirmation
+                          className="btn btn-sm btn-default"
+                          title={'Remove tag?'}
+                          message={'Are you sure you want to remove this tag?'}
+                          onConfirm={() => this.onDelete(key, idx)}
+                        >
+                          <span className="icon icon-trash" />
+                        </LinkWithConfirmation>
+                      )}
                     </td>
                   </tr>
                 );
