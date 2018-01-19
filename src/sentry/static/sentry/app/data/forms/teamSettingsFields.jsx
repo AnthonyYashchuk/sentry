@@ -1,6 +1,6 @@
-import {createSearchMap} from './util';
+import addForm from '../../utils/addForm';
 
-const forms = [
+const formGroups = [
   {
     // Form "section"/"panel"
     title: 'Team Settings',
@@ -27,13 +27,11 @@ const forms = [
   },
 ];
 
-export default forms;
-
 // generate search index from form fields
-export const searchIndex = createSearchMap({
+export default addForm({
   route: '/settings/organization/:orgId/teams/:teamId/settings/',
   requireParams: ['orgId', 'teamId'],
-  formGroups: forms,
+  formGroups,
 });
 
 // need to associate index -> form group -> route

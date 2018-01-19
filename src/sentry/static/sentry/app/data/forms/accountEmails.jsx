@@ -1,6 +1,6 @@
-import {createSearchMap} from './util';
+import addForm from '../../utils/addForm';
 
-const forms = [
+const formGroups = [
   {
     // Form "section"/"panel"
     title: 'Add Secondary Emails',
@@ -18,16 +18,7 @@ const forms = [
   },
 ];
 
-export default forms;
-
-// generate search index from form fields
-export const searchIndex = createSearchMap({
+export default addForm({
   route: '/settings/account/emails/',
-  formGroups: forms,
+  formGroups,
 });
-
-// need to associate index -> form group -> route
-// so when we search for a term we need to find:
-//   * what field(s) it matches:
-//     * what form group it belongs to
-//     * what route that belongs to
